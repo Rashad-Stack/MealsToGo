@@ -1,38 +1,17 @@
 import React from "react";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
-import styled from "styled-components/native";
 import star from "../../assets/star";
 import open from "../../assets/open";
 import { Spacer, Text } from "../utils";
-
-const RestaurantCard = styled(Card)`
-  background-color: ${({ theme }) => theme.colors.bg.primary};
-  margin: ${({ theme }) => theme.space[3]};
-`;
-const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${({ theme }) => theme.space[3]};
-  background-color: ${({ theme }) => theme.colors.bg.primary};
-`;
-
-const Rating = styled.View`
-  flex-direction: row;
-  padding: ${({ theme }) => theme.space[2]} 0;
-`;
-const Section = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-const SectionEnd = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-const Icon = styled.Image`
-  width: 15px;
-  height: 15px;
-`;
+import {
+  Icon,
+  RestaurantCardCover,
+  RestaurantCard,
+  Rating,
+  Section,
+  SectionEnd,
+} from "./restaurant-info-card.component";
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
