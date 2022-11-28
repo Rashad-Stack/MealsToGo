@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { RestaurantInfo } from "../components";
 import { RestaurantContext } from "../context/restaurant.context";
 
@@ -15,18 +15,17 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 const RestaurantScreen = () => {
-  const restaurantContext = useContext(RestaurantContext);
+  const { restaurant, isLoading, error } = useContext(RestaurantContext);
 
-  console.log(restaurantContext.restaurant);
-
+  console.log(error, ":😵 log from restaurant screen line number 20 😵  ");
   return (
     <>
       <SearchContainer>
         <Searchbar />
       </SearchContainer>
       <RestaurantList
-        data={restaurantContext.restaurant}
-        renderItem={() => <RestaurantInfo />}
+        data={restaurant}
+        renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
         keyExtractor={(item) => item.name}
       />
     </>
