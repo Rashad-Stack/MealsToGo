@@ -14,6 +14,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { SafeArea } from "./src/utils";
+import { RestaurantContextProvider } from "./src/context/restaurant.context";
 
 const Settings = () => <Text>Settings Screen</Text>;
 const Map = () => <Text>Map Screen</Text>;
@@ -52,15 +53,17 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SafeArea>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={iconPicker}>
-            <Tab.Screen name="Restaurant" component={RestaurantScreen} />
-            <Tab.Screen name="Settings" component={Settings} />
-            <Tab.Screen name="Map" component={Map} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </SafeArea>
+      <RestaurantContextProvider>
+        <SafeArea>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={iconPicker}>
+              <Tab.Screen name="Restaurant" component={RestaurantScreen} />
+              <Tab.Screen name="Settings" component={Settings} />
+              <Tab.Screen name="Map" component={Map} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </SafeArea>
+      </RestaurantContextProvider>
       <ExpoStatusBar style="auto" />
     </ThemeProvider>
   );
