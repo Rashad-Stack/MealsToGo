@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import { FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
-import { RestaurantInfo } from "../components";
+import { ActivityIndicator, Colors } from "react-native-paper";
+
+import { RestaurantInfo, Search } from "../components";
 import { RestaurantContext } from "../context/restaurant.context";
-import { ActivityIndicator, MD2Colors } from "react-native-paper";
-const SearchContainer = styled.View`
-  padding: ${({ theme }) => theme.space[3]};
-`;
+
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
@@ -20,18 +18,28 @@ const LoadingContainer = styled.View`
   justify-content: center;
 `;
 
+const ErrorMassage = styled.Text`
+color: ${({ theme }) => theme.colors.text.error}
+font-size:${({ theme }) => theme.fontSizes.title}
+font-weight: ${({ theme }) => theme.fontWeights.medium}
+`;
+
 const RestaurantScreen = () => {
   const { restaurant, isLoading, error } = useContext(RestaurantContext);
 
-  console.log(MD2Colors, ":😵 log from restaurant screen line number 20 😵  ");
   return (
     <>
-      <SearchContainer>
-        <Searchbar />
-      </SearchContainer>
+      <Search />
       {isLoading ? (
         <LoadingContainer>
-          <ActivityIndicator animating={true} color="red" size="large" />
+          {isLoading && (
+            <ActivityIndicator
+              animating={true}
+              color={Colors.orange600}
+              size="large"
+            />
+          )}
+          {/* {error && <ErrorMassage>Something Went Wrong</ErrorMassage>} */}
         </LoadingContainer>
       ) : (
         <RestaurantList
