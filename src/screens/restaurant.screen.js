@@ -25,7 +25,7 @@ const LoadingContainer = styled.View`
 // `;
 
 const RestaurantScreen = ({ navigation }) => {
-  const { restaurant, isLoading } = useContext(RestaurantContext);
+  const { restaurants, isLoading } = useContext(RestaurantContext);
 
   return (
     <>
@@ -43,7 +43,7 @@ const RestaurantScreen = ({ navigation }) => {
         </LoadingContainer>
       ) : (
         <RestaurantList
-          data={restaurant}
+          data={restaurants}
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() =>

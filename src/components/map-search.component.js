@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
@@ -6,6 +6,9 @@ import { LocationContext } from "../mock/location.context";
 
 const SearchContainer = styled.View`
   padding: ${({ theme }) => theme.space[3]};
+  position: absolute;
+  z-index: 999;
+  width: 100%;
 `;
 
 const Search = () => {
@@ -23,7 +26,7 @@ const Search = () => {
         value={searchKeyword}
         onSubmitEditing={() => onSearch(searchKeyword)}
         onChangeText={(text) => setSearchKeyword(text)}
-        icon="heart-outline"
+        icon="map"
       />
     </SearchContainer>
   );
