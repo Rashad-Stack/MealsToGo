@@ -22,10 +22,11 @@ const Item = styled.View`
   max-width: 120px;
   align-items: center;
 `;
+const isAndroid = Platform.OS === "android";
 
-const CoverImage = Platform.OS === "android" ? CompactWebView : CompactImage;
+const CompactREstaurantInfo = ({ restaurant, isMap }) => {
+  const CoverImage = isAndroid && isMap ? CompactWebView : CompactImage;
 
-const CompactREstaurantInfo = ({ restaurant }) => {
   return (
     <Item>
       <CoverImage source={{ uri: restaurant.photos[0] }} />

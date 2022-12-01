@@ -23,7 +23,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
     photos = [
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     ],
-    address = "100 Some Randon street",
+    address = "100 Some Random street",
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,

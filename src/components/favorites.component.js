@@ -1,5 +1,5 @@
 import { TouchableOpacity } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import styled from "styled-components";
 
@@ -14,25 +14,25 @@ const FavoriteButton = styled(TouchableOpacity)`
 
 const Favorites = ({ restaurant }) => {
   const { favorites, add, remove } = useContext(FavoritesContext);
-  console.log(
-    "🚀 ~ file: favorites.component.js:17 ~ Favorites ~ favorites",
-    favorites.length
-  );
+  const [isFavorites, setIsFavorites] = useState([]);
 
-  const isFavorite = favorites.find(
-    (favorite) => favorite.placeId === restaurant.placeId
-  );
+  useEffect(() => {
+    const isFavorite = favorites.find(
+      (favorite) => favorite.placeId === restaurant.placeId
+    );
+    setIsFavorites(isFavorite);
+  }, [favorites, restaurant.placeId]);
 
   return (
     <FavoriteButton
       onPress={() => {
-        isFavorite ? remove(restaurant) : add(restaurant);
+        isFavorites ? remove(restaurant) : add(restaurant);
       }}
     >
       <AntDesign
-        name={isFavorite ? "heart" : "hearto"}
+        name={isFavorites ? "heart" : "hearto"}
         size={24}
-        color={isFavorite ? "red" : "white"}
+        color={isFavorites ? "red" : "white"}
       />
     </FavoriteButton>
   );
