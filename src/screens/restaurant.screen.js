@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
 import { RestaurantDetailCard, Search } from "../components";
-import { RestaurantContext } from "../context/restaurant.context";
+import { RestaurantContext } from "../context";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {

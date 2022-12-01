@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import styled from "styled-components/native";
 
-import { LocationContext } from "../mock/location.context";
 import { RestaurantContext } from "../context/restaurant.context";
 import MapCallOut from "./map-callout.component";
 
@@ -12,8 +11,7 @@ const Map = styled(MapView)`
 `;
 
 const Maps = ({ navigate }) => {
-  const { location } = useContext(LocationContext);
-  const { restaurants } = useContext(RestaurantContext);
+  const { restaurants, location } = useContext(RestaurantContext);
 
   const [latDelta, setLatDelta] = useState(0);
 

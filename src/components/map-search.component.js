@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
-import { LocationContext } from "../mock/location.context";
+import { RestaurantContext } from "../context/restaurant.context";
 
 const SearchContainer = styled.View`
   padding: ${({ theme }) => theme.space[3]};
@@ -12,7 +12,7 @@ const SearchContainer = styled.View`
 `;
 
 const Search = () => {
-  const { keyWord, onSearch } = useContext(LocationContext);
+  const { keyWord, onSearch } = useContext(RestaurantContext);
   const [searchKeyword, setSearchKeyword] = useState(keyWord);
 
   useEffect(() => {

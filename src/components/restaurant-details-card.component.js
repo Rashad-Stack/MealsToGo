@@ -1,8 +1,10 @@
 import React from "react";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
+
 import star from "../../assets/star";
 import open from "../../assets/open";
+
 import { Spacer, Text } from "../utils";
 import {
   Icon,
@@ -12,6 +14,7 @@ import {
   Section,
   SectionEnd,
 } from "./restaurant-info-card.component";
+import Favorites from "./favorites.component.js";
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -30,6 +33,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
 
   return (
     <RestaurantCard>
+      <Favorites restaurant={restaurant} />
       <RestaurantCardCover source={{ uri: photos[0] }} />
       <Card.Content>
         <Text variant="label">{name}</Text>

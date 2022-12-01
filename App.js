@@ -9,8 +9,11 @@ import { ThemeProvider } from "styled-components";
 
 import { theme } from "./src/theme";
 import { SafeArea } from "./src/utils";
-import { RestaurantContextProvider } from "./src/context/restaurant.context";
-import { LocationContextProvider } from "./src/mock/location.context";
+import {
+  RestaurantContextProvider,
+  FavoritesContextProvider,
+} from "./src/context";
+
 import { Navigator } from "./src/navigation";
 
 export default function App() {
@@ -27,13 +30,14 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <LocationContextProvider>
+      <FavoritesContextProvider>
         <RestaurantContextProvider>
           <SafeArea>
             <Navigator />
           </SafeArea>
         </RestaurantContextProvider>
-      </LocationContextProvider>
+      </FavoritesContextProvider>
+
       <ExpoStatusBar style="auto" />
     </ThemeProvider>
   );
