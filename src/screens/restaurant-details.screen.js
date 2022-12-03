@@ -1,5 +1,5 @@
-import { View, ScrollView } from "react-native";
-import React, { useState } from "react";
+import { ScrollView } from "react-native";
+import React from "react";
 import { List } from "react-native-paper";
 import styled from "styled-components";
 

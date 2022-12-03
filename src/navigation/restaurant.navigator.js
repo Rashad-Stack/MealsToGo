@@ -13,7 +13,7 @@ const RestaurantNavigator = () => {
     <RestaurantStack.Navigator
       screenOptions={{
         headerShown: false,
-        ...TransitionPresets.ModalSlideFromBottomIOS,
+        ...TransitionPresets.RevealFromBottomAndroid,
       }}
     >
       <RestaurantStack.Screen name="Restaurants" component={RestaurantScreen} />

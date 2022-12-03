@@ -1,10 +1,13 @@
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import RestaurantNavigator from "./restaurant.navigator";
 import { MapViewScreen, Settings } from "../screens";
+import {
+  RestaurantContextProvider,
+  FavoritesContextProvider,
+} from "../context";
 
 const iconList = {
   Restaurant: "md-restaurant",
@@ -24,18 +27,20 @@ const iconPicker = ({ route }) => {
   };
 };
 
-const Navigator = () => {
+const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={iconPicker}>
-        <Tab.Screen name="Restaurant" component={RestaurantNavigator} />
-        <Tab.Screen name="Map" component={MapViewScreen} />
-        <Tab.Screen name="Settings" component={Settings} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <FavoritesContextProvider>
+      <RestaurantContextProvider>
+        <Tab.Navigator screenOptions={iconPicker}>
+          <Tab.Screen name="Restaurant" component={RestaurantNavigator} />
+          <Tab.Screen name="Map" component={MapViewScreen} />
+          <Tab.Screen name="Settings" component={Settings} />
+        </Tab.Navigator>
+      </RestaurantContextProvider>
+    </FavoritesContextProvider>
   );
 };
 
-export default Navigator;
+export default TabNavigator;

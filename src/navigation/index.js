@@ -1,1 +1,2 @@
-export { default as Navigator } from "./app.navigator";
+export { default as TabNavigator } from "./main.navigator";
+export { default as MainNavigator } from "./main.navigator";

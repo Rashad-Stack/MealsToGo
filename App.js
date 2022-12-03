@@ -9,12 +9,9 @@ import { ThemeProvider } from "styled-components";
 
 import { theme } from "./src/theme";
 import { SafeArea } from "./src/utils";
-import {
-  RestaurantContextProvider,
-  FavoritesContextProvider,
-} from "./src/context";
+import { AuthContextProvider } from "./src/context";
 
-import { Navigator } from "./src/navigation";
+import { MainNavigator } from "./src/navigation";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -30,13 +27,11 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <FavoritesContextProvider>
-        <RestaurantContextProvider>
-          <SafeArea>
-            <Navigator />
-          </SafeArea>
-        </RestaurantContextProvider>
-      </FavoritesContextProvider>
+      <AuthContextProvider>
+        <SafeArea>
+          <MainNavigator />
+        </SafeArea>
+      </AuthContextProvider>
 
       <ExpoStatusBar style="auto" />
     </ThemeProvider>
