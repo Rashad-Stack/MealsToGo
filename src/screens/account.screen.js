@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import { Button } from "react-native-paper";
+import LottieView from "lottie-react-native";
 
 import { Spacer } from "../utils";
 import { colors } from "../theme/colors";
@@ -9,6 +10,15 @@ const Account = ({ navigation }) => {
   return (
     <AccountBackgroundImage>
       <AccountOverlay />
+      <AnimationWrapper>
+        <LottieView
+          key="animation"
+          autoPlay
+          loop
+          resizeMode="cover"
+          source={require("../../assets/watermelon.json")}
+        />
+      </AnimationWrapper>
       <Title>Meals To Go</Title>
       <AccountContainer>
         <Spacer position="bottom" size="large">
@@ -61,4 +71,12 @@ const AuthButton = styled(Button).attrs({
 const Title = styled.Text`
   font-size: 25px;
   font-weight: bold;
+`;
+
+const AnimationWrapper = styled.View`
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  top: 30px;
+  padding: ${({ theme }) => theme.space[2]};
 `;
