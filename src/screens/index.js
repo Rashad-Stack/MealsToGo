@@ -5,3 +5,4 @@ export { default as Settings } from "./setting.screen";
 export { default as Login } from "./Login.screen";
 export { default as Register } from "./register.screen";
 export { default as Account } from "./account.screen";
+export { default as Favorites } from "./favorites.screen";

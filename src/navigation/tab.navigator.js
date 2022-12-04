@@ -3,7 +3,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import RestaurantNavigator from "./restaurant.navigator";
-import { MapViewScreen, Settings } from "../screens";
+import SettingNavigator from "./settings.navigator";
+import { MapViewScreen } from "../screens";
 import {
   RestaurantContextProvider,
   FavoritesContextProvider,
@@ -36,7 +37,7 @@ const TabNavigator = () => {
         <Tab.Navigator screenOptions={iconPicker}>
           <Tab.Screen name="Restaurant" component={RestaurantNavigator} />
           <Tab.Screen name="Map" component={MapViewScreen} />
-          <Tab.Screen name="Settings" component={Settings} />
+          <Tab.Screen name="Settings" component={SettingNavigator} />
         </Tab.Navigator>
       </RestaurantContextProvider>
     </FavoritesContextProvider>
