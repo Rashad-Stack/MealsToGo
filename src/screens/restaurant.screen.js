@@ -5,6 +5,7 @@ import { ActivityIndicator, Colors } from "react-native-paper";
 
 import { RestaurantDetailCard, Search, FavoriteBar } from "../components";
 import { RestaurantContext, FavoritesContext } from "../context";
+import { FadeInView } from "../animation";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -38,6 +39,7 @@ const RestaurantScreen = ({ navigation }) => {
       {isToggle && (
         <FavoriteBar restaurants={favorites} onNavigate={navigation} />
       )}
+
       {isLoading ? (
         <LoadingContainer>
           {isLoading && (
@@ -50,19 +52,21 @@ const RestaurantScreen = ({ navigation }) => {
           {/* {error && <ErrorMassage>Something Went Wrong</ErrorMassage>} */}
         </LoadingContainer>
       ) : (
-        <RestaurantList
-          data={restaurants}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("RestaurantDetails", { restaurant: item })
-              }
-            >
-              <RestaurantDetailCard restaurant={item} />
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.name}
-        />
+        <FadeInView>
+          <RestaurantList
+            data={restaurants}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("RestaurantDetails", { restaurant: item })
+                }
+              >
+                <RestaurantDetailCard restaurant={item} />
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.name}
+          />
+        </FadeInView>
       )}
     </>
   );

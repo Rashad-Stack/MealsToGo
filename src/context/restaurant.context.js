@@ -42,10 +42,6 @@ const RestaurantContextProvider = ({ children }) => {
         .then(restaurantTransformed)
         .then((result) => setRestaurants(result))
         .catch((err) => {
-          console.log(
-            "🚀 ~ file: restaurant.context.js:49 ~ useEffect ~ err",
-            err
-          );
           setError(err);
         });
       setIsLoading(false);

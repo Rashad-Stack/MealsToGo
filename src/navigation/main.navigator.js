@@ -7,7 +7,6 @@ import AccountNavigator from "./account.navigator";
 
 const MainNavigator = () => {
   const { users } = useContext(AuthContext);
-  console.log("🚀 ~ file: main.navigator.js:10 ~ MainNavigator ~ users", users);
 
   return (
     <NavigationContainer>
